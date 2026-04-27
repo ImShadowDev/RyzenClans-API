@@ -82,7 +82,7 @@ boolean hasClan = api.hasPlayerClan(player);
 
 // All clans, or top N sorted by points
 Collection<? extends IClan> all = api.getAllClans();
-List<? extends IClan> top10     = api.getTopClans(10);
+List<? extends IClan> top10 = api.getTopClans(10);
 ```
 
 ### Check relations
@@ -109,7 +109,7 @@ api.isFocused("alpha", "beta");
 Optional<ClanRank> rank = api.getPlayerRank(player);
 
 api.isLeader(player.getUniqueId());
-api.canPlayerManage(player.getUniqueId());  // ADMIN or above
+api.canPlayerManage(player.getUniqueId()); // ADMIN or above
 api.canPlayerInvite(player.getUniqueId());
 api.canPlayerKick(player.getUniqueId());
 ```
@@ -117,15 +117,15 @@ api.canPlayerKick(player.getUniqueId());
 ### Clan stats
 
 ```java
-api.getClanDisplayName(uuid);   // color-coded display name
-api.getClanPrefix(uuid);        // color-coded prefix
+api.getClanDisplayName(uuid); // color-coded display name
+api.getClanPrefix(uuid); // color-coded prefix
 api.getClanPoints("warriors");
 api.getClanSize("warriors");
 api.isClanFriendlyFireEnabled("warriors");
 
-api.getClanAllies("warriors");   // Set<String> of clan names
+api.getClanAllies("warriors"); // Set<String> of clan names
 api.getClanEnemies("warriors");
-api.getClanMembers("warriors");  // Set<UUID>
+api.getClanMembers("warriors"); // Set<UUID>
 ```
 
 ---
@@ -135,15 +135,15 @@ api.getClanMembers("warriors");  // Set<UUID>
 If you retrieved a clan object, it exposes everything about it without extra API calls:
 
 ```java
-clan.getName();           // internal name (lowercase)
-clan.getDisplayName();    // formatted with color
+clan.getName(); // internal name (lowercase)
+clan.getDisplayName(); // formatted with color
 clan.getPrefix();
-clan.getLeader();         // UUID
-clan.getCreationTime();   // Unix timestamp in ms
+clan.getLeader();  // UUID
+clan.getCreationTime(); // Unix timestamp in ms
 
 // Members
-clan.getMembers();                   // Set<UUID>
-clan.getMemberRanks();               // Map<UUID, ClanRank>
+clan.getMembers(); // Set<UUID>
+clan.getMemberRanks(); // Map<UUID, ClanRank>
 clan.getRank(uuid);
 clan.isMember(uuid);
 clan.isInvited(uuid);
@@ -152,7 +152,7 @@ clan.getMemberDeaths(uuid);
 clan.getMemberJoinedTime(uuid);
 
 // Relations
-clan.getAllies();          // Set<String> of clan names
+clan.getAllies(); // Set<String> of clan names
 clan.getEnemies();
 clan.getFocused();
 clan.isAlly("beta");
@@ -165,8 +165,8 @@ clan.isFriendlyFire();
 
 // Locations
 clan.hasClanBase();
-clan.getClanBase();       // Location, null if not set
-clan.getRallyPoint();     // Location, null if not set
+clan.getClanBase(); // Location, null if not set
+clan.getRallyPoint(); // Location, null if not set
 
 // Permission checks per member
 clan.canManage(uuid);
@@ -196,10 +196,10 @@ ClanRank rank = api.getPlayerRank(uuid).orElse(null);
 if (rank == null) return; // player has no clan
 
 rank.getLevel();
-rank.getDisplayName();                    // pulled from ranks.yml
+rank.getDisplayName(); // pulled from ranks.yml
 rank.isHigherThan(ClanRank.MEMBER);
 rank.canPromoteTo(ClanRank.ADMIN);
-rank.hasPermission("invite");             // checks node or wildcard *
+rank.hasPermission("invite"); // checks node or wildcard *
 rank.getPermissions();
 ```
 
