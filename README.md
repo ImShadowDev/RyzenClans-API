@@ -52,12 +52,12 @@ public class MyPlugin extends JavaPlugin {
     private IRyzenClansAPI clansAPI;
 
     @Override
-    public void onEnable() {
-        if (!RyzenClansProvider.isAvailable()) {
-            getLogger().warning("RyzenClans not found. Clan features will be disabled.");
-            return;
-        }
+public void onEnable() {
+    if (Bukkit.getPluginManager().isPluginEnabled("RyzenClans")) {
         clansAPI = RyzenClansProvider.get();
+        getLogger().info("RyzenClans found. Clan features enabled.");
+    } else {
+        getLogger().warning("RyzenClans not found. Clan features will be disabled.");
     }
 }
 ```
