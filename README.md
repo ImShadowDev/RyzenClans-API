@@ -49,9 +49,9 @@ Everything goes through `RyzenClansProvider`. If you're using `soft-depend`, alw
 ```java
 public class MyPlugin extends JavaPlugin {
 
-    private IRyzenClansAPI clansAPI;
+private IRyzenClansAPI clansAPI = null;
 
-    @Override
+@Override
 public void onEnable() {
     if (Bukkit.getPluginManager().isPluginEnabled("RyzenClans")) {
         clansAPI = RyzenClansProvider.get();
